@@ -9,11 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
+@RequestMapping("/api")
 public class PongController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PongController.class);
 
-	@RequestMapping("/")
+	@RequestMapping("/pong")
 	public String index() {
 		logger.debug("accessing pong GET controller");
 		System.out.println("access pong GET controller");
