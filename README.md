@@ -7,7 +7,11 @@ a profile.
 
 ## Usage example
 
-http://localhost:8080/bootme-pong
+http://localhost:8090/api/
+
+## Resources
+1. GET /api/pong returns the pong date
+1. GET /api/pingpong returns the ping date. Note: the ping service is required to be running.
 
 
 
