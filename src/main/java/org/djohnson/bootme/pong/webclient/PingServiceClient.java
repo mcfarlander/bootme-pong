@@ -40,14 +40,15 @@ public class PingServiceClient {
 	 * Create a new instance of PingServiceClient.
 	 * 
 	 * @param webClientBuilder injected web client
+	 * @param url the ping service's url, needs to be injected in the constructor
 	 */
-	public PingServiceClient(WebClient.Builder webClientBuilder) {
+	public PingServiceClient(WebClient.Builder webClientBuilder, @Value("${service.ping.url}") String url) {
 		
 		logger.debug("creating a ping service client");
-		logger.debug("base ping url {}", pingServiceUrl);
+		logger.debug("base ping url {}", url);
 		
 		this.webClient = webClientBuilder
-				.baseUrl(pingServiceUrl)
+				.baseUrl(url)
 				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
 				.build();
 	}
@@ -63,7 +64,7 @@ public class PingServiceClient {
 		logger.debug("api ping {}", pingApiPing);
 		
 		Mono<String> result = webClient.get()
-				.uri("pingApiPing")
+				.uri(pingApiPing)
 				.retrieve()
 				.bodyToMono(String.class);
 		
