@@ -47,5 +47,17 @@ public class PongController {
 		return pingServiceClient.callPingService();
 		
 	}
+	
+	/**
+	 * Call the Ping service and return a token.
+	 * 
+	 * @return the ping date message
+	 */
+	@RequestMapping("/pingtoken")
+	public String getPingToken() {
+		logger.debug("accessing ping GET controller from pong for authentication.");
+		return pingServiceClient.callAuthenticationService("foo", "bar");
+		
+	}
 
 }
